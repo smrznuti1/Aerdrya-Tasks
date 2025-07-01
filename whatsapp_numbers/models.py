@@ -11,8 +11,10 @@ class Number(models.Model):
 
 
 class StringNumber(models.Model):
+    number: models.OneToOneField = models.OneToOneField(
+        Number, models.CASCADE, primary_key=True
+    )
     string_number: models.CharField = models.CharField(max_length=200)
-    number: models.ForeignKey = models.ForeignKey(Number, models.CASCADE)
 
     def __transform_digit(self, digit):
         match digit:
@@ -36,6 +38,16 @@ class StringNumber(models.Model):
                 return "eight"
             case "9":
                 return "nine"
+
+    def __init__(self, number, string_number=""):
+        string_number = self.transform_number(number)
+        super().__init__(number, string_number)
+
+    def save(self):
+        if type(self.number) is not Number:
+            self.number = Number(self.number)
+        self.string_number = self.transform_number(self.number.number)
+        super().save()
 
     def transform_number(self, number):
         digits = str(number)

@@ -1,7 +1,7 @@
 {% if numbers %}
 <ul>
   {% for number in numbers %}
-  <li><a href="{% url 'get_number' number %}">Number: {{ number.number }}</a></li>
+  <li><a href="{% url 'numbers_app:get_number' number %}">Number: {{ number.number }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

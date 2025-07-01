@@ -1,0 +1,9 @@
+{% if numbers %}
+<ul>
+    {% for number in numbers %}
+    <li><a href="{% url 'numbers_app:transform_number' number %}">{{ number.number }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No numbers in database.</p>
+{% endif %}
