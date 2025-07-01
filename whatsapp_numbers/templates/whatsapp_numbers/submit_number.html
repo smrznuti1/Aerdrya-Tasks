@@ -1,0 +1,7 @@
+<form action="{% url 'numbers_app:submit_number' %}" method="post">
+{% csrf_token %}
+    <legend><h1>Submit number:</h1></legend>
+    {% if error_message %}<p><strong> {{ error_message }}</strong></p>{% endif %}
+    <input type="text" name="number" value="">
+    <input type="submit" value="Submit the Number">
+</form>

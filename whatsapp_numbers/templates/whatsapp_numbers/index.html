@@ -1,0 +1,9 @@
+{% if numbers %}
+<ul>
+  {% for number in numbers %}
+  <li><a href="{% url 'get_number' number %}">Number: {{ number.number }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No numbers are available.</p>
+{% endif %}
