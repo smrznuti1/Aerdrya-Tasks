@@ -28,5 +28,13 @@ def welcome(request):
 
 
 def submit_number(request):
-    new_number = request.POST["number"]
+    try:
+        new_number = Number(int(request.POST["number"]))
+    except ValueError:
+        return render(
+            request,
+            "whatsapp_numbers/submit_number.html",
+            {"error_message": "Please insert and integer."},
+        )
+    new_number.save()
     return render(request, "whatsapp_numbers/submit_number.html")
