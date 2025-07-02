@@ -24,7 +24,7 @@ class StringNumber(models.Model):
     number: models.OneToOneField = models.OneToOneField(
         Number, models.CASCADE, primary_key=True
     )
-    string_number: models.CharField = models.CharField(max_length=200)
+    string_number: models.CharField = models.CharField(null=True, max_length=200)
 
     def __transform_digit(self, digit):
         """
