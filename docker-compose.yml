@@ -1,0 +1,24 @@
+services:
+  db:
+    image: docker.io/postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=dog
+      - POSTGRES_PASSWORD=12345
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8001:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=dog
+      - POSTGRES_PASSWORD=12345
+    depends_on:
+      - db
