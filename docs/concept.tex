@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+
+\title{5}
+\author{Filip Bozovic}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Microservices Architecture Overview}
+\begin{itemize}
+	\item Split the application into independent services - Web frontend, API backend, Database, and Worker services.
+	\item Use REST APIs or message queues for inter-service communication
+	\item Scalable services
+\end{itemize}
+
+\section*{Dockerization}
+\begin{itemize}
+	\item Each service runs in its own Docker container
+	\item Use Kubernetes for orchestration which would provide stability of the services
+\end{itemize}
+
+\section*{DevOps}
+\begin{itemize}
+	\item Implement monitoring and logging
+	\item Enable CI/CD pipelines for automated deployment
+\end{itemize}
+
+\end{document}
